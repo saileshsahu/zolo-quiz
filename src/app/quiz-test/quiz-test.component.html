@@ -1,0 +1,318 @@
+<div class="container-fluid">
+
+  <!--Quiz Content-->
+  <div class="row" style="padding: 0rem 3rem; height: 80vh;" *ngIf="!showQuizResult">
+    <div class="col-md-12 col-lg-4 d-flex flex-column" style="align-items: flex-start; justify-content: center;">
+      <p style="margin: auto;">Time Remaining</p>
+      <div style="display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      background-color: #f4f4f4;
+      margin: auto;
+      padding: 0.5em 1em;
+      border-radius: 5px;">
+        <p style="margin-bottom: 0em;"><span *ngIf="minutes > 0">{{minutes}} <span *ngIf="minutes > 1">Minutes </span><span *ngIf="minutes < 2">Minute </span> </span>{{seconds}} Seconds</p>
+      </div>
+      <p style="margin: auto;">Your Progress</p>
+      <mat-progress-bar mode="determinate" value="{{progressValue}}"></mat-progress-bar>
+      <img class="rs-hide-480 rs-hide-800" src="../../assets/img/test-banner.svg" width="85%" height="70%">
+    </div>
+
+    <!--Question 1-->
+    <div id="question1" class="col-md-12 col-lg-8 d-flex flex-column zolo-card" style="align-items: flex-start;" *ngIf="showQuestion1">
+      <p class="zolo-medium">Question 1</p>
+      <p class="zolo-small">Which of these is a Planet ?</p>
+      <!--Answers-->
+      <div class="d-flex zolo-answer-block" (click)="checkAnswer(1,1)" [ngClass]="{'zolo-incorrect': checkAnswerKey1[0] === false}">
+        <div matRipple [matRippleColor]="rippleColor">
+          <p>Uranium</p>
+        </div>
+        <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey1[0] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+          Incorrect</span>
+      </div>
+      <div class="d-flex zolo-answer-block" (click)="checkAnswer(1,2)" [ngClass]="{'zolo-incorrect': checkAnswerKey1[1] === false}">
+        <div matRipple [matRippleColor]="rippleColor">
+          <p>Plutonium</p>
+        </div>
+        <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey1[1] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+          Incorrect</span>
+      </div>
+      <div class="d-flex zolo-answer-block" (click)="checkAnswer(1,3)" [ngClass]="checkAnswerKey1[2] ? 'zolo-correct' : 'zolo-default'">
+        <div matRipple [matRippleColor]="rippleColor">
+          <p>Uranus</p>
+        </div>
+        <span class="zolo-correct-answer-text" *ngIf="checkAnswerKey1[2] === true"><i class="material-icons" style="margin-right: 8%;">done</i>
+          Correct</span>
+      </div>
+      <div class="d-flex zolo-answer-block" (click)="checkAnswer(1,4)" [ngClass]="{'zolo-incorrect': checkAnswerKey1[3] === false}">
+        <div matRipple [matRippleColor]="rippleColor">
+          <p>U-567</p>
+        </div>
+        <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey1[3] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+          Incorrect</span>
+      </div>
+
+      <!--Proceed to Next Question-->
+      <div class="d-flex flex-row proceed-button-array">
+        <!-- <button mat-button color="primary" (click)="proceedToNextQuestion()" style="margin-right: 10px;">Back</button> -->
+        <button mat-flat-button color="primary" (click)="proceedToNextQuestion(1)">Proceed</button>
+      </div>
+    </div>
+
+    <!--Question 2-->
+    <div id="question2" class="col-md-12 col-lg-8 d-flex flex-column zolo-card" style="align-items: flex-start;" *ngIf="showQuestion2">
+      <p class="zolo-medium">Question 2</p>
+      <p class="zolo-small">Which of these is not a Bird ?</p>
+      <!--Answers-->
+      <div class="d-flex zolo-answer-block" (click)="checkAnswer(2,1)" [ngClass]="{'zolo-incorrect': checkAnswerKey2[0] === false}">
+        <div matRipple [matRippleColor]="rippleColor">
+          <p>Penguin</p>
+        </div>
+        <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey2[0] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+          Incorrect</span>
+      </div>
+      <div class="d-flex zolo-answer-block" (click)="checkAnswer(2,2)" [ngClass]="checkAnswerKey2[1] ? 'zolo-correct' : 'zolo-default'">
+        <div matRipple [matRippleColor]="rippleColor">
+          <p>Dragon Fly</p>
+        </div>
+        <span class="zolo-correct-answer-text" *ngIf="checkAnswerKey2[1] === true"><i class="material-icons" style="margin-right: 8%;">done</i>
+          Correct</span>
+      </div>
+      <div class="d-flex zolo-answer-block" (click)="checkAnswer(2,3)" [ngClass]="{'zolo-incorrect': checkAnswerKey2[2] === false}">
+        <div matRipple [matRippleColor]="rippleColor">
+          <p>Kiwi</p>
+        </div>
+        <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey2[2] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+          Incorrect</span>
+      </div>
+      <div class="d-flex zolo-answer-block" (click)="checkAnswer(2,4)" [ngClass]="{'zolo-incorrect': checkAnswerKey2[3] === false}">
+        <div matRipple [matRippleColor]="rippleColor">
+          <p>Cassowary</p>
+        </div>
+        <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey2[3] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+          Incorrect</span>
+      </div>
+
+      <!--Proceed to Next Question-->
+      <div class="d-flex flex-row proceed-button-array">
+        <button mat-button color="primary" (click)="goBack(1)" style="margin-right: 10px;">Back</button>
+        <button mat-flat-button color="primary" (click)="proceedToNextQuestion(2)">Proceed</button>
+      </div>
+    </div>
+
+    <!--Question 3-->
+    <div id="question3" class="col-md-12 col-lg-8 d-flex flex-column zolo-card" style="align-items: flex-start;" *ngIf="showQuestion3">
+      <p class="zolo-medium">Question 3</p>
+      <p class="zolo-small">Which of these can't Swim ?</p>
+      <!--Answers-->
+      <div class="d-flex zolo-answer-block" (click)="checkAnswer(3,1)" [ngClass]="{'zolo-incorrect': checkAnswerKey3[0] === false}">
+        <div matRipple [matRippleColor]="rippleColor">
+          <p>Snake</p>
+        </div>
+        <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey3[0] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+          Incorrect</span>
+      </div>
+      <div class="d-flex zolo-answer-block" (click)="checkAnswer(3,2)" [ngClass]="{'zolo-incorrect': checkAnswerKey3[1] === false}">
+        <div matRipple [matRippleColor]="rippleColor">
+          <p>Dog</p>
+        </div>
+        <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey3[1] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+          Incorrect</span>
+      </div>
+      <div class="d-flex zolo-answer-block" (click)="checkAnswer(3,3)" [ngClass]="{'zolo-incorrect': checkAnswerKey3[2] === false}">
+        <div matRipple [matRippleColor]="rippleColor">
+          <p>Elephant</p>
+        </div>
+        <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey3[2] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+          Incorrect</span>
+      </div>
+      <div class="d-flex zolo-answer-block" (click)="checkAnswer(3,4)" [ngClass]="checkAnswerKey3[3] ? 'zolo-correct' : 'zolo-default'">
+        <div matRipple [matRippleColor]="rippleColor">
+          <p>Me</p>
+        </div>
+        <span class="zolo-correct-answer-text" *ngIf="checkAnswerKey3[3] === true"><i class="material-icons" style="margin-right: 8%;">done</i>
+          Correct</span>
+      </div>
+
+      <!--Proceed to Next Question-->
+      <div class="d-flex flex-row proceed-button-array">
+        <button mat-button color="primary" (click)="goBack(2)" style="margin-right: 10px;">Back</button>
+        <button mat-flat-button color="primary" (click)="evaluateQuiz()">Finish</button>
+      </div>
+    </div>
+  </div>
+
+  <!--Quiz Results-->
+  <div class="row" style="padding: 0rem 3rem;" *ngIf="showQuizResult">
+    <div class="col-md-12 col-lg-8 d-flex flex-column" style="align-items: flex-start; overflow-y: auto;">
+      <p class="zolo-big">Relax!</p>
+      <p class="zolo-small">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing
+        industries for previewing layouts and visual mockups.</p>
+      <p class="zolo-bold">This is how you did :</p>
+
+      <!--Question 1-->
+      <div id="question1Result" class="d-flex flex-column zolo-card zolo-result-card">
+        <p class="zolo-medium">Question 1 <span *ngIf="selectedAns1 === ''" style="color: #606060; font-size: 0.6em;"> (Skipped)</span></p>
+        <p class="zolo-small">Which of these is a Planet ?</p>
+        <!--Answers-->
+        <div class="d-flex zolo-answer-block" (click)="checkAnswer(1,1)" [ngClass]="{'zolo-incorrect': checkAnswerKey1[0] === false}">
+          <div matRipple [matRippleColor]="rippleColor">
+            <p>Uranium</p>
+          </div>
+          <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey1[0] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+            Incorrect</span>
+          <span *ngIf="checkAnswerKey1[0] === false" style="position: absolute; right: 10%;">
+            <p class="zolo-tooltip-left rs-hide-480">Your Answer</p>
+          </span>
+        </div>
+        <div class="d-flex zolo-answer-block" (click)="checkAnswer(1,2)" [ngClass]="{'zolo-incorrect': checkAnswerKey1[1] === false}">
+          <div matRipple [matRippleColor]="rippleColor">
+            <p>Plutonium</p>
+          </div>
+          <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey1[1] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+            Incorrect</span>
+          <span *ngIf="checkAnswerKey1[1] === false" style="position: absolute; right: 10%;">
+            <p class="zolo-tooltip-left rs-hide-480">Your Answer</p>
+          </span>
+        </div>
+        <div class="d-flex zolo-answer-block zolo-correct" (click)="checkAnswer(1,3)">
+          <div matRipple [matRippleColor]="rippleColor">
+            <p>Uranus</p>
+          </div>
+          <span class="zolo-correct-answer-text"><i class="material-icons" style="margin-right: 8%;">done</i>
+            Correct</span>
+          <span *ngIf="checkAnswerKey1[2] === true" style="position: absolute; right: 10%;">
+            <p class="zolo-tooltip-left rs-hide-480">Your Answer</p>
+          </span>
+        </div>
+        <div class="d-flex zolo-answer-block" (click)="checkAnswer(1,4)" [ngClass]="{'zolo-incorrect': checkAnswerKey1[3] === false}">
+          <div matRipple [matRippleColor]="rippleColor">
+            <p>U-567</p>
+          </div>
+          <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey1[3] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+            Incorrect</span>
+          <span *ngIf="checkAnswerKey1[3] === false" style="position: absolute; right: 10%;">
+            <p class="zolo-tooltip-left rs-hide-480">Your Answer</p>
+          </span>
+        </div>
+        <div class="d-flex flex-column zolo-explanation">
+          <p class="zolo-small" style="color: #4a4a4a;">Explanation</p>
+          <p class="zolo-small">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing
+            industries for previewing layouts and visual mockups.</p>
+        </div>
+      </div>
+
+      <!--Question 2-->
+      <div id="question2Result" class="d-flex flex-column zolo-card zolo-result-card">
+        <p class="zolo-medium">Question 2 <span *ngIf="selectedAns2 === ''" style="color: #606060; font-size: 0.6em;"> (Skipped)</span></p>
+        <p class="zolo-small">Which of these is not a Bird ?</p>
+        <!--Answers-->
+        <div class="d-flex zolo-answer-block" (click)="checkAnswer(2,1)" [ngClass]="{'zolo-incorrect': checkAnswerKey2[0] === false}">
+          <div matRipple [matRippleColor]="rippleColor">
+            <p>Penguin</p>
+          </div>
+          <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey2[0] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+            Incorrect</span>
+          <span *ngIf="checkAnswerKey2[0] === false" style="position: absolute; right: 10%;">
+            <p class="zolo-tooltip-left rs-hide-480">Your Answer</p>
+          </span>
+        </div>
+        <div class="d-flex zolo-answer-block zolo-correct" (click)="checkAnswer(2,2)">
+          <div matRipple [matRippleColor]="rippleColor">
+            <p>Dragon Fly</p>
+          </div>
+          <span class="zolo-correct-answer-text"><i class="material-icons" style="margin-right: 8%;">done</i>
+            Correct</span>
+          <span *ngIf="checkAnswerKey2[1] === true" style="position: absolute; right: 10%;">
+            <p class="zolo-tooltip-left rs-hide-480">Your Answer</p>
+          </span>
+        </div>
+        <div class="d-flex zolo-answer-block" (click)="checkAnswer(2,3)" [ngClass]="{'zolo-incorrect': checkAnswerKey2[2] === false}">
+          <div matRipple [matRippleColor]="rippleColor">
+            <p>Kiwi</p>
+          </div>
+          <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey2[2] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+            Incorrect</span>
+          <span *ngIf="checkAnswerKey2[2] === false" style="position: absolute; right: 10%;">
+            <p class="zolo-tooltip-left rs-hide-480">Your Answer</p>
+          </span>
+        </div>
+        <div class="d-flex zolo-answer-block" (click)="checkAnswer(2,4)" [ngClass]="{'zolo-incorrect': checkAnswerKey2[3] === false}">
+          <div matRipple [matRippleColor]="rippleColor">
+            <p>Cassowary</p>
+          </div>
+          <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey2[3] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+            Incorrect</span>
+          <span *ngIf="checkAnswerKey2[3] === false" style="position: absolute; right: 10%;">
+            <p class="zolo-tooltip-left rs-hide-480">Your Answer</p>
+          </span>
+        </div>
+        <div class="d-flex flex-column zolo-explanation">
+          <p class="zolo-small" style="color: #4a4a4a;">Explanation</p>
+          <p class="zolo-small">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing
+            industries for previewing layouts and visual mockups.</p>
+        </div>
+      </div>
+
+      <!--Question 3-->
+      <div id="question3Result" class="d-flex flex-column zolo-card zolo-result-card">
+        <p class="zolo-medium">Question 3 <span *ngIf="selectedAns3 === ''" style="color: #606060; font-size: 0.6em;"> (Skipped)</span></p>
+        <p class="zolo-small">Which of these can't Swim ?</p>
+        <!--Answers-->
+        <div class="d-flex zolo-answer-block" (click)="checkAnswer(3,1)" [ngClass]="{'zolo-incorrect': checkAnswerKey3[0] === false}">
+          <div matRipple [matRippleColor]="rippleColor">
+            <p>Snake</p>
+          </div>
+          <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey3[0] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+            Incorrect</span>
+          <span *ngIf="checkAnswerKey3[0] === false" style="position: absolute; right: 10%;">
+            <p class="zolo-tooltip-left rs-hide-480">Your Answer</p>
+          </span>
+        </div>
+        <div class="d-flex zolo-answer-block" (click)="checkAnswer(3,2)" [ngClass]="{'zolo-incorrect': checkAnswerKey3[1] === false}">
+          <div matRipple [matRippleColor]="rippleColor">
+            <p>Dog</p>
+          </div>
+          <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey3[1] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+            Incorrect</span>
+          <span *ngIf="checkAnswerKey3[1] === false" style="position: absolute; right: 10%;">
+            <p class="zolo-tooltip-left rs-hide-480">Your Answer</p>
+          </span>
+        </div>
+        <div class="d-flex zolo-answer-block" (click)="checkAnswer(3,3)" [ngClass]="{'zolo-incorrect': checkAnswerKey3[2] === false}">
+          <div matRipple [matRippleColor]="rippleColor">
+            <p>Elephant</p>
+          </div>
+          <span class="zolo-incorrect-answer-text" *ngIf="checkAnswerKey3[2] === false"><i class="material-icons" style="margin-right: 8%;">close</i>
+            Incorrect</span>
+          <span *ngIf="checkAnswerKey3[2] === false" style="position: absolute; right: 10%;">
+            <p class="zolo-tooltip-left rs-hide-480">Your Answer</p>
+          </span>
+        </div>
+        <div class="d-flex zolo-answer-block zolo-correct" (click)="checkAnswer(3,4)">
+          <div matRipple [matRippleColor]="rippleColor">
+            <p>Me</p>
+          </div>
+          <span class="zolo-correct-answer-text"><i class="material-icons" style="margin-right: 8%;">done</i>
+            Correct</span>
+          <span *ngIf="checkAnswerKey3[3] === true" style="position: absolute; right: 10%;">
+            <p class="zolo-tooltip-left rs-hide-480">Your Answer</p>
+          </span>
+        </div>
+        <div class="d-flex flex-column zolo-explanation">
+          <p class="zolo-small" style="color: #4a4a4a;">Explanation</p>
+          <p class="zolo-small">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing
+            industries for previewing layouts and visual mockups.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-md-12 col-lg-4 d-flex zolo-chartLayout">
+      <div id="chartContainer" style="width:100%; height:100%;"></div>
+      <!-- <img src="../../assets/img/result-banner.svg" width="100%" height="80%"> -->
+    </div>
+  </div>
+
+</div>

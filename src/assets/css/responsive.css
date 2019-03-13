@@ -1,0 +1,31 @@
+@media all and (max-width: 480px) {
+    body {
+        font-size: 75%;
+    }
+
+    .rs-hide-480 {
+        display: none;
+    }
+
+    .proceed-button-array, .zolo-chartLayout {
+        position: unset;
+    }
+
+    .zolo-answer-block {
+        width: 100%;
+    }
+
+    .zolo-incorrect-answer-text, .zolo-correct-answer-text {
+        margin-right: 7%;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 800px) {
+    .rs-hide-800 {
+        display: none;
+    }
+
+    .proceed-button-array, .zolo-chartLayout {
+        position: unset;
+    }
+}
